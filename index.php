@@ -11,7 +11,7 @@ require_once __DIR__ . "/Cura.php";
 require_once __DIR__ . "/Utente.php";
 
 // PRODOTTI
-$crocchette = new Cibo("Cat Chow", 41.5, "gatti");
+$crocchette = new Cibo("Cat Chow", 41.5, "gatti", false);
 $crocchette->peso_netto = 10;
 $crocchette->gusto = "salmone";
 $crocchette->descrizione = "Cat Chow Adult è un alimento secco per gatti adulti che contiene tutti i nutrienti essenziali di cui il tuo gatto ha bisogno per un'età adulta attiva e un benessere generale.";
@@ -31,7 +31,11 @@ $gioco_gatti->specie_animale = "gatti";
 // UTENTI
 $tizio = new Utente("tizio@gmail.com", true, "09/25");
 $tizio->nome = "Tizio";
-$tizio->aggiungiAlCarrello($crocchette);
+try {
+    $tizio->aggiungiAlCarrello($crocchette);
+} catch (Exception $e) {
+    echo "Aggiunto al carrello prodotto non disponibile";
+}
 $tizio->aggiungiAlCarrello($antipulci);
 $tizio->ottieniTotale();
 $tizio->validaPagamento();

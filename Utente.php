@@ -14,10 +14,11 @@ class Utente {
     }
 
     public function aggiungiAlCarrello($_prodotto) {
-        if ($this->disponibile = true) {
+        if ($_prodotto->disponibile) {
             $this -> carrello[] = $_prodotto;
         } else {
-            echo "Questo prodotto non è disponibile";
+            // echo "Questo prodotto non è disponibile";
+            throw new Exception("Questo prodotto non è disponibile");
         }
     }
 

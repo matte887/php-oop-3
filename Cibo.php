@@ -5,9 +5,10 @@ class Cibo extends Prodotto {
     public $peso_netto;
     public $gusto;
 
-    function __construct($_nome, $_prezzo, $_specie_animale) {
+    function __construct($_nome, $_prezzo, $_specie_animale, $_disponibile=true) {
         parent:: __construct($_nome, $_prezzo);
         $this -> specie_animale = $_specie_animale;
+        $this-> disponibile = $_disponibile;
     }
 
     public function stampaCaratt() { ?>
